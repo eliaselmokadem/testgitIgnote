@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <%- include("partials/header") %>
+    <main>
+        <h1>Word Guess</h1>
+            
+        <form action="/words" method="GET">
+            <input type="text" name="q" value="">
+            <select name="sortDirection">
+                <option selected>asc</option>
+                <option>desc</option>
+            </select>
+            <button type="submit">GO</button>
+        </form>
+        <ul>
+            <% for(let i = 0; i < array.length; i++) { %>
+                <% if(!check(array[i])){ %>
+                    <li style="color: red;"><%= array[i]%></li>
+                <% } %>
+                <% if(check(array[i])){ %>
+                    <li><%= array[i]%></li>
+                <% } %>
+                
+            <% } %>
+        </ul>
+    </main>
+    <%- include("partials/footer") %>
+</body>
+
+</html>
